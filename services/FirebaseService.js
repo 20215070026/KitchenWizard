@@ -9,20 +9,15 @@ export class FirebaseService {
       const user = auth.currentUser;
       if (!user) throw new Error('Kullanıcı oturum açmamış');
 
-      // Önce fotoğrafı base64'ten blob'a çevir
       const imageBlob = await this.uriToBlob(imageUri);
       
-      // Storage referansını oluştur
       const storageRef = ref(storage, `refrigerator_photos/${user.uid}/${Date.now()}.jpg`);
       
       try {
-        // Fotoğrafı yükle
         const uploadResult = await uploadBytes(storageRef, imageBlob);
         
-        // Yüklenen fotoğrafın URL'sini al
         const imageUrl = await getDownloadURL(uploadResult.ref);
 
-        // Firestore'a kaydet
         const analysisRef = collection(db, 'analyses');
         const analysisData = {
           userId: user.uid,

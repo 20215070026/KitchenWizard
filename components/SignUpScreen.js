@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, StyleSheet } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebase.Config"; // Firebase config dosyasını import et
+import { auth } from "../firebase/firebase.Config"; 
 import { useNavigation } from "@react-navigation/native";
 
 const SignUpScreen = () => {
@@ -19,10 +19,9 @@ const SignUpScreen = () => {
       setSuccess("Üyelik başarıyla oluşturuldu!");
       setError("");
 
-      // Başarılı kayıt sonrası Login ekranına yönlendir
       setTimeout(() => {
         navigation.navigate("Login");
-      }, 2000); // 2 saniye bekletme
+      }, 2000); 
     } catch (err) {
       console.error("Kayıt Hatası:", err);
       setError("Üye olurken bir hata oluştu! E-postayı kontrol edin.");

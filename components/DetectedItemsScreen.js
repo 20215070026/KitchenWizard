@@ -97,7 +97,6 @@ const DetectedItemsScreen = ({ navigation, route }) => {
         <CustomButton
           title="Alışveriş Listesini Paylaş"
           onPress={() => {
-            // Paylaşım fonksiyonu eklenecek
           }}
           fullWidth
           disabled={Object.keys(shoppingList).length === 0}

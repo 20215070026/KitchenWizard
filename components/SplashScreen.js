@@ -6,19 +6,18 @@ const SplashScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    // Splash ekranı 3 saniye gösterilecek, sonra Login ekranına geçilecek
     setTimeout(() => {
       navigation.navigate('Login');
-    }, 3000); // 3 saniye sonra Login ekranına geçiş
+    }, 3000);
   }, [navigation]);
 
   return (
     <View style={styles.container}>
-      {/* Tam ekran logo */}
+      {}
       <Image 
         source={require('../assets/logo.png')}
         style={styles.logo} 
-        resizeMode="contain" // Görselin ekranı tamamen kaplaması için
+        resizeMode="contain"
       />
     </View>
   );
@@ -32,8 +31,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   logo: {
-    width: '100%', // Görsel genişliği ekran genişliğine eşit
-    height: '100%', // Görsel yüksekliği ekran yüksekliğine eşit
+    width: '100%', 
+    height: '100%',
   },
 });
 

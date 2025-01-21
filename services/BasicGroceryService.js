@@ -35,12 +35,10 @@ export class BasicGroceryService {
     const allBasicItems = this.getAllBasicItems();
     const detectedItemNames = detectedItems.map(item => item.name.toLowerCase());
     
-    // Eksik olan ürünleri bul
     const missingItems = allBasicItems.filter(basicItem => 
       !detectedItemNames.includes(basicItem.name.toLowerCase())
     );
 
-    // Kategorilere göre grupla
     const groupedMissingItems = missingItems.reduce((acc, item) => {
       if (!acc[item.category]) {
         acc[item.category] = [];

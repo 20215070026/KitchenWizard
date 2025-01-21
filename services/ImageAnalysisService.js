@@ -9,7 +9,6 @@ import { FirebaseService } from './FirebaseService';
 export class ImageAnalysisService {
   static model = null;
 
-  // Gıda ürünlerinin listesi
   static foodItems = [
     'banana', 'apple', 'orange', 'carrot', 'broccoli', 'hot dog', 'pizza',
     'donut', 'cake', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon',
@@ -46,7 +45,6 @@ export class ImageAnalysisService {
 
       const predictions = await this.model.detect(imageTensor);
 
-      // Sadece gıda ürünlerini filtrele
       const foodPredictions = predictions.filter(prediction => 
         this.foodItems.includes(prediction.class.toLowerCase())
       );
@@ -67,7 +65,6 @@ export class ImageAnalysisService {
         bbox: prediction.bbox,
       }));
 
-      // Eksik ürünleri bul
       const shoppingList = BasicGroceryService.getShoppingList(detectedItems);
 
       const result = {
@@ -89,7 +86,6 @@ export class ImageAnalysisService {
           result.analysisId = analysisId;
         } catch (firebaseError) {
           console.error('Firebase kayıt hatası:', firebaseError);
-          // Firebase hatası olsa bile analiz sonucunu döndür
         }
       }
 
